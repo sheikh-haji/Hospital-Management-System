@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:o="http://omnifaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+        <script type='text/javascript' src='resources/js/placeholders.min.js' ></script>
+        <link type="text/css" rel="stylesheet" href="resources/css/style.css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        
+        <f:facet name="middle">
+            <h:outputStylesheet name="bootstrap/css/bootstrap.flatly.css" />            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <h:outputScript name="bootstrap/js/bootstrap.js" />
+        </f:facet>
+        <f:metadata>
+            <f:event listener="#{AccountController.loadpatientmedicalhistory()}" type="preRenderView"></f:event>
+        </f:metadata>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   <o:conditionalComment if="lt IE 8">
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+   </o:conditionalComment> 
+    </h:head>
+    <h:body>
+        <ui:include src="header_patient.xhtml" />
+        <p:dataTable var="pid" value="#{AccountController.medicalhistory}">	        
+            <p:column headerText="Disease">
+                <h:form>
+                    #{pid[1]}
+                </h:form>
+            </p:column>
+            <p:column headerText="Doctor">
+                <h:form>
+                    #{pid[5]}
+                </h:form>
+            </p:column>
+            <p:column headerText="Department">
+                <h:form>
+                    #{pid[6]}
+                </h:form>
+            </p:column>
+            <p:column headerText="Prescriptions">
+                <h:form>
+                    #{pid[2]}
+                </h:form>
+            </p:column>
+            <p:column headerText="Remarks">
+                <h:form>
+                    #{pid[3]}
+                </h:form>	        	
+            </p:column>
+            <p:column headerText="Date">
+                #{pid[4]}
+            </p:column>	 		
+        </p:dataTable> 
+    </h:body>
+</html>
